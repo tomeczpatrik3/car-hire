@@ -27,4 +27,10 @@ public class CustomerApiController {
         Iterable<Customer> customers = customerService.listAll();
         return ResponseEntity.ok(customers);
     }
+    
+    @GetMapping("/names")
+    private ResponseEntity<Iterable<String>> names() {
+        Iterable<String> names = customerService.listNames();
+        return ResponseEntity.ok(names);
+    }
 }
