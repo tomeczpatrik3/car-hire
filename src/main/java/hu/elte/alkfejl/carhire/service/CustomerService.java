@@ -14,8 +14,8 @@ public class CustomerService {
     /*
         Új vásárló felvétele:
     */
-    public void addCustomer(Customer customer) {
-        customerRepository.save(customer);
+    public Customer addCustomer(Customer customer) {
+        return customerRepository.save(customer);
     }
     /*
         Vásárló eltávolítása a rendszerből:
@@ -43,4 +43,8 @@ public class CustomerService {
         
         return names;
     }
+    
+    /*
+        
+    */
 }

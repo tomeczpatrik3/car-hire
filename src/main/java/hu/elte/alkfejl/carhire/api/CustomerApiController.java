@@ -33,4 +33,12 @@ public class CustomerApiController {
         Iterable<String> names = customerService.listNames();
         return ResponseEntity.ok(names);
     }
+    
+    
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/add")
+    private ResponseEntity<Customer> add(@RequestBody Customer customer) {
+        Customer saved = customerService.addCustomer(customer);
+        return ResponseEntity.ok(saved);
+    }
 }

@@ -21,7 +21,7 @@ public class Person extends BaseEntity {
 
     //Nem (f/n):
     @Column(nullable = false)
-    private char gender;
+    private String gender;
 
     //Lakcím:
     @Column(nullable = false)
