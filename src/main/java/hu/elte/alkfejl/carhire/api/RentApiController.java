@@ -27,4 +27,11 @@ public class RentApiController {
         Iterable<Rent> rents = rentService.listAll();
         return ResponseEntity.ok(rents);
     }
+  
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/add")
+    private ResponseEntity<Rent> add(@RequestBody Rent rent) {
+        Rent saved = rentService.addRent(rent);
+        return ResponseEntity.ok(saved);
+    }
 }

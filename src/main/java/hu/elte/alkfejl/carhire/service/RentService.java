@@ -18,14 +18,14 @@ public class RentService {
     /*
         Új kölcsönzés hozzáadása a rendszerhez:
     */
-    public void addHire(Rent hire) {
-        rentRepository.save(hire);
+    public Rent addRent(Rent rent) {
+        return rentRepository.save(rent);
     }
     /*
         Kölcsönzés törlése a rendszerből:
     */
-    public void removeHire(Rent hire) {
-        rentRepository.delete(hire);
+    public void removeRent(Rent rent) {
+        rentRepository.delete(rent);
     }
     /*
         Minden kölcsönzés kilistázása:

@@ -10,29 +10,37 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "HIRES")
+@Table(name = "RENTS")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Rent extends BaseEntity{
-    //A kölcsönző személy azonosítója:
+    //A kölcsönző személy neve:
     @Column(nullable = false, unique = true)
-    private long customerID;      
+    private String customerName;      
 
-    //A kölcsönzött autó azonosítója:
-    @Column(nullable = false, unique = true)
-    private long carID;      
+    //A kölcsönzött autó márkája:
+    @Column(nullable = false)
+    private String carMake;
+    
+    //A kölcsönzött autó típusa:
+    @Column(nullable = false)
+    private String carModel;
     
     //Az üzlet, ahol kölcsönöztünk:
     @Column(nullable = false)
-    private long storeID;  
+    private String storeName;  
     
     //A kölcsönzést lebonyolító dolgozó:
     @Column(nullable = false)
-    private long employeeID;  
+    private String employeeName;  
     
     //A kölcsönzés dátuma:
     @Column(nullable = false)
-    private Date hireDate;     
+    private String rentDate;  
+    
+    //A kölcsönzéshez tartozó megjegyzés:
+    @Column(nullable = false)
+    private String note;  
 }

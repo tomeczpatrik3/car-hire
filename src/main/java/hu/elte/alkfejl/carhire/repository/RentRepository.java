@@ -7,15 +7,15 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RentRepository extends CrudRepository<Rent, Long> {
-    //Kölcsönzés keresése a kölcsönző személy azonosítója alapján:
-    Optional<Rent> findByCustomerID(long customerID);
+    Iterable<Rent> findByCustomerName(String customerName);
 
-    //Kölcsönzés keresése az autó azonosítója alapján:
-    Optional<Rent> findByCarID(long carID);
+    Iterable<Rent> findByCarMake(String carMake);
+
+    Iterable<Rent> findByCarModel(String carModel);
+
+    Iterable<Rent> findByEmployeeName(String employeeName);
     
-    //Kölcsönzés keresése az üzlet azonosítója alapján:
-    Iterable<Rent> findByStoreID(long storeID);
+    Iterable<Rent> findByRentDate(String rentDate);
     
-    //Kölcsönzés keresése a kölcsönzést rendező alkalmazott azonosítója alapján:
-    Iterable<Rent> findByEmployeeID(long employeeID);
+    Iterable<Rent> findByStoreName(String storeName);
 }
