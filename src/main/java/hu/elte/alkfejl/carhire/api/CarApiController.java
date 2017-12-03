@@ -34,9 +34,15 @@ public class CarApiController {
         return ResponseEntity.ok(makes);
     }
     
-    @GetMapping("/models/{model}")
-    private ResponseEntity<Iterable<String>> models(@PathVariable String model) {
-        Iterable<String> models = carService.listModels(model);
+    @GetMapping("/models/{make}")
+    private ResponseEntity<Iterable<String>> modelsByMake(@PathVariable String make) {
+        Iterable<String> models = carService.listModelsByMake(make);
         return ResponseEntity.ok(models);
     }    
+  
+    @GetMapping("/models")
+    private ResponseEntity<Iterable<String>> models() {
+        Iterable<String> models = carService.listModels();
+        return ResponseEntity.ok(models);
+    }   
 }

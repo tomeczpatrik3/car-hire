@@ -27,7 +27,43 @@ public class RentApiController {
         Iterable<Rent> rents = rentService.listAll();
         return ResponseEntity.ok(rents);
     }
-  
+    
+    @GetMapping("/dates")
+    private ResponseEntity<Iterable<String>> dates() {
+        Iterable<String> dates = rentService.listDates();
+        return ResponseEntity.ok(dates);
+    }
+    
+    @GetMapping("list/customerName/{value}")
+    private ResponseEntity<Iterable<Rent>> customerName(@PathVariable String value) {
+        Iterable<Rent> rents = rentService.listByCustomerName(value);
+        return ResponseEntity.ok(rents);
+    }
+    
+    @GetMapping("list/storeName/{value}")
+    private ResponseEntity<Iterable<Rent>> storeName(@PathVariable String value) {
+        Iterable<Rent> rents = rentService.listByStoreName(value);
+        return ResponseEntity.ok(rents);
+    }
+    
+    @GetMapping("list/carMake/{value}")
+    private ResponseEntity<Iterable<Rent>> carMake(@PathVariable String value) {
+        Iterable<Rent> rents = rentService.listByMake(value);
+        return ResponseEntity.ok(rents);
+    }
+    
+    @GetMapping("list/carModel/{value}")
+    private ResponseEntity<Iterable<Rent>> carModel(@PathVariable String value) {
+        Iterable<Rent> rents = rentService.listByModel(value);
+        return ResponseEntity.ok(rents);
+    }
+    
+    @GetMapping("list/rentDate/{value}")
+    private ResponseEntity<Iterable<Rent>> rentDate(@PathVariable String value) {
+        Iterable<Rent> rents = rentService.listByRentDate(value);
+        return ResponseEntity.ok(rents);
+    }
+    
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/add")
     private ResponseEntity<Rent> add(@RequestBody Rent rent) {

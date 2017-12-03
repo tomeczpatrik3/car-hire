@@ -48,13 +48,28 @@ public class CarService {
     /*
         Márkához tartozó típus kilistázása:
     */
-    public Iterable<String> listModels(String make) {
+    public Iterable<String> listModelsByMake(String make) {
         ArrayList<String> models = new ArrayList<String>();
         
         Iterable<Car> cars = carRepository.findAll();
         
         for (Car c : cars) {
             if (c.getMake().equals(make) && !models.contains(c.getModel()))
+                models.add(c.getModel());
+        }
+        return models;
+    }
+    
+    /*
+        Összes típus kilistázása:
+    */
+    public Iterable<String> listModels() {
+        ArrayList<String> models = new ArrayList<String>();
+        
+        Iterable<Car> cars = carRepository.findAll();
+        
+        for (Car c : cars) {
+            if (!models.contains(c.getModel()))
                 models.add(c.getModel());
         }
         return models;
