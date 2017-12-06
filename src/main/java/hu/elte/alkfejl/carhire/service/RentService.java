@@ -69,4 +69,19 @@ public class RentService {
     public Iterable<Rent> listByRentDate(String value) {
         return rentRepository.findByRentDate(value);
     }
+    
+    public boolean isValid(Rent rent) {
+        boolean l = true;
+        
+        //Név ellenőrzése:
+        l = l && rent.getCustomerName().matches("^[A-Z][a-z]{2,15} [A-Z][a-z]{2,15}( [A-Z][a-z]{2,15})?");
+        //Üzlet nevének ellenőrzése:
+        l = l && rent.getStoreName().matches("^[A-Za-z]{2,15}([ A-Za-z]{2,15})*");
+        //Márka ellenőrzése:
+        l = l && rent.getCarMake().matches("^[A-Za-z]{2,15}([A-Za-z -]{2,15})*");
+        //Autó típusának ellenőrzése:
+        l = l && rent.getCarModel().matches("^([A-Za-z0-9]{1,15})+");
+        
+        return true;
+    }
 }

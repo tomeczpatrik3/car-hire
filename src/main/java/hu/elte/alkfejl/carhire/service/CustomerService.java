@@ -45,6 +45,23 @@ public class CustomerService {
     }
     
     /*
-        
+        Validalas:
     */
+    public boolean isValid(Customer customer) {
+        boolean l = true;
+        
+        //Név ellenőrzése:
+        l = l && customer.getName().matches("^[A-Z][a-z]{2,15} [A-Z][a-z]{2,15}( [A-Z][a-z]{2,15}){0,3}");
+        //Dátum ellenőrzése:
+        l = l && customer.getBirth().matches("(19[0-9]{2}. [01][0-9]. [0-3][0-9].)|(20[0-1][0-9]. [01][0-9]. [0-3][0-9].)");
+        //Cím ellenőrzése:
+        l = l && customer.getAddress().matches("[0-9]{4},([ A-Za-z0-9,.]{2,15}){1,10}");
+        //Személy ellenőrzése:
+        l = l && customer.getIdNumber().matches("[0-9]{6}[A-Z]{2}");
+        //Nem ellenőrzése:
+        l = l && (customer.getGender().equals("Férfi") || customer.getGender().equals("Nő"));
+        
+        
+        return l;
+    }
 }

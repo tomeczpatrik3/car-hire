@@ -67,7 +67,12 @@ public class RentApiController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/add")
     private ResponseEntity<Rent> add(@RequestBody Rent rent) {
-        Rent saved = rentService.addRent(rent);
-        return ResponseEntity.ok(saved);
+        if ( rentService.isValid(rent) ) {
+            Rent saved = rentService.addRent(rent);
+            return ResponseEntity.ok(saved);
+        }
+        else {
+            return null;
+        }
     }
 }

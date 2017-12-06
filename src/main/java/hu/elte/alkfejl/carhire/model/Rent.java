@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class Rent extends BaseEntity{
     //A kölcsönző személy neve:
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String customerName;      
 
     //A kölcsönzött autó márkája:

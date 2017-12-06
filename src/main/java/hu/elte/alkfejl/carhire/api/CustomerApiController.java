@@ -38,7 +38,12 @@ public class CustomerApiController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/add")
     private ResponseEntity<Customer> add(@RequestBody Customer customer) {
-        Customer saved = customerService.addCustomer(customer);
-        return ResponseEntity.ok(saved);
+        if (customerService.isValid(customer)) {
+            Customer saved = customerService.addCustomer(customer);
+            return ResponseEntity.ok(saved);
+        }
+        else {
+            return null;
+        }
     }
 }
